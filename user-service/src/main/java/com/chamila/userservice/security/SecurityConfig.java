@@ -39,7 +39,7 @@ public class SecurityConfig {
 
                     http.csrf(customizer -> customizer.disable())
                         .authorizeHttpRequests(request -> request
-                        .requestMatchers("register", "login")
+                        .requestMatchers("users/register", "users/login")
                         .permitAll()
                         .anyRequest().authenticated())
                         .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
@@ -55,18 +55,6 @@ public class SecurityConfig {
 
 
 
-
-    /*
-     * @Bean public UserDetailsService userDetailsService() {
-     *
-     * UserDetails user=User .withDefaultPasswordEncoder() .username("navin")
-     * .password("n@123") .roles("USER") .build();
-     *
-     * UserDetails admin=User .withDefaultPasswordEncoder() .username("admin")
-     * .password("admin@789") .roles("ADMIN") .build();
-     *
-     * return new InMemoryUserDetailsManager(user,admin); }
-     */
 
 
 }

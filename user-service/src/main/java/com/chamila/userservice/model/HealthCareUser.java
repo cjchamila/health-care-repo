@@ -2,16 +2,16 @@ package com.chamila.userservice.model;
 
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 
-@Data
-@Table(name = "users")
+
+@Table(name = "health_care_user")
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
+@Getter
+@Setter
 public class HealthCareUser {
 
     @Id
