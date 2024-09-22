@@ -1,5 +1,5 @@
 # Maven build output
-target/
+**/target/
 
 # IDE-specific files
 .idea/
@@ -30,5 +30,7 @@ target/
 hs_err_pid*
 replay_pid*
  
-patient-service/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst
-appointment-service/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst
+# Ignore all createdFiles.lst and inputFiles.lst files in any directory
+**/*.createdFiles.lst
+**/*.inputFiles.lst
+
