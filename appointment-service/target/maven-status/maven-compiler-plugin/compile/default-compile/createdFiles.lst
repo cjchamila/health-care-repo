@@ -1,1 +1,7 @@
+com\chamila\appointmentservice\model\Appointment.class
+com\chamila\appointmentservice\exception\ResourceNotFoundException.class
+com\chamila\appointmentservice\service\AppointmentService.class
+com\chamila\appointmentservice\service\impl\AppointmentServiceImpl.class
 AppointmentServiceMain.class
+com\chamila\appointmentservice\controller\AppointmentController.class
+com\chamila\appointmentservice\repository\AppointmentRepository.class
