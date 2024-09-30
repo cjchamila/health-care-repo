@@ -1,11 +1,15 @@
 package com.chamila.userservice.service;
 
 
+import com.chamila.userservice.model.HealthCareUser;
+import com.chamila.userservice.model.HealthCareUserRole;
+import com.chamila.userservice.repository.HealthCareUserRepository;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
@@ -18,9 +22,14 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.function.Function;
+import java.util.stream.Collectors;
 
 @Service
 public class JwtService {
+
+
+    @Autowired
+    private HealthCareUserRepository healthCareUserRepository;
 
      private String secretKey;
 
@@ -39,8 +48,12 @@ public class JwtService {
     }
 
     public String generateToken(String username) {
+        HealthCareUser healthCareUser = healthCareUserRepository.findByusername(username);
 
         Map<String, Object> claims = new HashMap<>();
+        claims.put("roles", healthCareUser.getRoles().stream().map(HealthCareUserRole::getName).collect(Collectors.toList()));
+        claims.put("userId", healthCareUser.getUser_id());
+        claims.put("email", healthCareUser.getEmail());
 
         return Jwts.builder()
                 .setClaims(claims)

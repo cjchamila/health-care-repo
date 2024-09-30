@@ -5,7 +5,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface HealthCareUserRepository extends JpaRepository<HealthCareUser, Integer> {
+public interface HealthCareUserRepository extends JpaRepository<HealthCareUser, Long> {
 
-    HealthCareUser findByUsername(String username);
+    HealthCareUser findByusername(String username);
 }

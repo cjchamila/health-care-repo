@@ -10,6 +10,9 @@
         <version>3.3.3</version>
         <relativePath />
     </parent>
+    <!--        The spring-boot-starter-parent POM inherits from the spring-boot-dependencies POM.-->
+    <!--        This means that any dependency versions declared in spring-boot-dependencies -->
+    <!--        are inherited by spring-boot-starter-parent.-->
 
     <groupId>com.chamila</groupId>
     <artifactId>health-care-app</artifactId>
@@ -31,14 +34,18 @@
     </properties>
 
     <dependencyManagement>
+<!--    The <dependencyManagement> section is used to define the versions of dependencies,-->
+
     <dependencies>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-dependencies</artifactId>
-            <version>3.3.3</version>
-            <type>pom</type>
-            <scope>import</scope>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>org.springframework.boot</groupId>-->
+<!--            <artifactId>spring-boot-dependencies</artifactId>-->
+<!--            <version>3.3.3</version>-->
+<!--            <type>pom</type>-->
+<!--            <scope>import</scope>-->
+<!--&lt;!&ndash;            Import Scope: The scope is set to import, which tells Maven to import the dependency management rules from &ndash;&gt;-->
+<!--&lt;!&ndash;            the spring-boot-dependencies POM file&ndash;&gt;-->
+<!--        </dependency>-->
         <!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
         <dependency>
             <groupId>org.projectlombok</groupId>
@@ -54,6 +61,14 @@
             <type>pom</type>
             <scope>import</scope>
         </dependency>
+
+        <!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-oauth2-authorization-server -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-oauth2-authorization-server</artifactId>
+            <version>3.3.3</version>
+        </dependency>
+
 
     </dependencies>
     </dependencyManagement>

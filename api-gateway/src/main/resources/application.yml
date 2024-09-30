@@ -1,25 +1,50 @@
+server:
+  port: 8080
+
 spring:
   application:
-    name: api-gateway
+    name: healthcare-api-gateway
+
   cloud:
     gateway:
       routes:
-        - id: user-service
-          uri: lb://USER-SERVICE
-          predicates:
-            - Path=/api/v1/users/**
         - id: patient-service
-          uri: lb://PATIENT-SERVICE
+          uri: http://localhost:8086 #lb://PATIENT-SERVICE
           predicates:
-            - Path=/api/v1/patients/**
+              - Path=/api/v1/patient/**
+#          filters:
+#              - StripPrefix=2
+
         - id: appointment-service
-          uri: lb://APPOINTMENT-SERVICE
+          uri: http://localhost:8084  #lb://APPOINTMENT-SERVICE
           predicates:
             - Path=/api/v1/appointments/**
-  security:
-    user:
-      name: user
-      password: password
+#          filters:
+#            - StripPrefix=2
+
+        - id: user-service
+          uri: http://localhost:8085 #lb://USER-SERVICE
+          predicates:
+            - Path=/api/v1/user/**
+#          filters:
+#            - StripPrefix=2
+
+#eureka:
+#  client:
+#    serviceUrl:
+#      defaultZone: http://localhost:8761/eureka/
 
 services:
   user-service-url: "http://user-service/api/v1/users"
+
+jwt:
+  expiration: 1800000
+
+
+public-api:
+  paths: /auth/, /public/
+
+
+
+
+

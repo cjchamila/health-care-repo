@@ -63,4 +63,9 @@ public class HealthCareUserServiceImpl implements HealthCareUserService {
 
 
     }
+
+    @Override
+    public HealthCareUser findByUserName(String userName) {
+        return userRepo.findByusername(userName);
+    }
 }
